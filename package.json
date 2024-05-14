@@ -2,10 +2,10 @@
   "name": "learning-sequelize",
   "version": "1.0.0",
   "description": "Path way to professional sequelizing",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "node ./dist/index.js",
-    "dev": "cross-env nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
+    "start": "node ./dist/server.js",
+    "dev": "cross-env nodemon --watch 'src/**/*.ts' --exec ts-node src/server.ts",
     "build": "npx tsc"
   },
   "keywords": [],
@@ -13,8 +13,11 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dayjs": "^1.11.11",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "pino": "^9.1.0",
+    "pino-pretty": "^11.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

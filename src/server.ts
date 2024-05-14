@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
+import { Logger } from "./libs";
 
 const app: Express = express();
 require("dotenv").config();
@@ -12,6 +13,4 @@ app.use("/", (req: Request, res: Response) => {
 
 const port = process.env.PORT || 3200;
 
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-});
+app.listen(port, () => Logger.info(`Server is listening on port ${port}`));
