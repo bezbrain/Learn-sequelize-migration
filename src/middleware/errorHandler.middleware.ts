@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
+import { ApiResponse } from "../libs";
 
 const ErrorHandlerMiddleware = (
   err: any,
@@ -12,7 +13,11 @@ const ErrorHandlerMiddleware = (
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
   };
 
-  //
+  return ApiResponse.Error(
+    res,
+    customMessage.statusCode,
+    customMessage.message
+  );
 };
 
 export default ErrorHandlerMiddleware;
