@@ -1,1 +1,1 @@
-Learning Sequelize migration
+# Learning Sequelize migration
