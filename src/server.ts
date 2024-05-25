@@ -22,7 +22,7 @@ const startDB = async () => {
   try {
     app.listen(port, () => Logger.info(`Server is listening on port ${port}`));
   } catch (error) {
-    Logger.error(error);
+    Logger.info(error);
   }
 };
 startDB();

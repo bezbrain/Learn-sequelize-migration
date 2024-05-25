@@ -1,7 +1,25 @@
+import * as Sequelize from "sequelize";
 import { DataTypes, UUIDV4 } from "sequelize";
 import { db } from "../datasource";
+import { hashPassword } from "../utils";
 
-const User = db.define(
+interface UserPayload {
+  id?: number;
+  email: string;
+  username: string;
+  password: string;
+}
+
+interface UserModel extends Sequelize.Model<UserModel, UserPayload> {
+  id: number;
+  username: string;
+  email: string;
+  password: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+const User = db.define<UserModel, UserPayload>(
   "user",
   {
     id: {
@@ -25,3 +43,10 @@ const User = db.define(
   },
   { timestamps: true }
 );
+
+// Hash password before registration
+User.beforeCreate(async (user) => {
+  if (user.password) {
+    user.password = await hashPassword(user.password);
+  }
+});
