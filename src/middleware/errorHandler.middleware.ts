@@ -13,6 +13,11 @@ const ErrorHandlerMiddleware = (
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
   };
 
+  return res.json({
+    status: false,
+    message: err,
+  });
+
   return ApiResponse.Error(
     res,
     customMessage.statusCode,
