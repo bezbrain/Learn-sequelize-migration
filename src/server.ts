@@ -18,4 +18,11 @@ app.use("/", (req: Request, res: Response) => {
 app.use(NotFoundMiddleware);
 app.use(ErrorHandlerMiddleware);
 
-app.listen(port, () => Logger.info(`Server is listening on port ${port}`));
+const startDB = async () => {
+  try {
+    app.listen(port, () => Logger.info(`Server is listening on port ${port}`));
+  } catch (error) {
+    Logger.error(error);
+  }
+};
+startDB();
