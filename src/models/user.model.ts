@@ -34,8 +34,6 @@ const User = db.define<UserModel, UserPayload>(
   { timestamps: true }
 );
 
-// Check if password and confirm password are the same
-
 // Hash password before registration
 User.beforeCreate(async (user) => {
   if (user.password !== user.confirmPassword) {
